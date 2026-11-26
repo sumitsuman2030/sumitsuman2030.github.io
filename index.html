@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LPU Assignment Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>LPU Assignment Submission Tracker</h1>
+        <p>A simple way to manage assignments and submission status</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#assignments">Assignments</a>
+        <a href="#add">Add Assignment</a>
+        <a href="#submit">Submit Work</a>
+    </nav>
+
+    <main class="container" id="home">
+        <div class="welcome">
+            <h2>Welcome, Student!</h2>
+            <p>Check your pending assignments and submit your work before the deadline.</p>
+        </div>
+
+        <div class="summary">
+            <div class="box">
+                <h3 id="total">4</h3>
+                <p>Total Assignments</p>
+            </div>
+            <div class="box">
+                <h3 id="pendingCount">2</h3>
+                <p>Pending</p>
+            </div>
+            <div class="box">
+                <h3>1</h3>
+                <p>Submitted</p>
+            </div>
+            <div class="box">
+                <h3>1</h3>
+                <p>Late Submission</p>
+            </div>
+        </div>
+
+        <section id="assignments">
+            <h2>Assignment List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Assignment</th>
+                        <th>Deadline</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="assignmentRows">
+                    <tr>
+                        <td>Data Structures</td>
+                        <td>Linked List Program</td>
+                        <td>27 Nov 2026</td>
+                        <td class="pending">Pending</td>
+                        <td><button class="small-btn" onclick="openSubmit('Linked List Program')">Submit</button></td>
+                    </tr>
+                    <tr>
+                        <td>Physics</td>
+                        <td>Ray Diagram File</td>
+                        <td>29 Nov 2026</td>
+                        <td class="pending">Pending</td>
+                        <td><button class="small-btn" onclick="openSubmit('Ray Diagram File')">Submit</button></td>
+                    </tr>
+                    <tr>
+                        <td>English</td>
+                        <td>Research Abstract</td>
+                        <td>23 Nov 2026</td>
+                        <td class="submitted">Submitted</td>
+                        <td>Done</td>
+                    </tr>
+                    <tr>
+                        <td>Management</td>
+                        <td>Case Study</td>
+                        <td>20 Nov 2026</td>
+                        <td class="late">Late</td>
+                        <td><button class="small-btn" onclick="openSubmit('Case Study')">Submit Late</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="add">
+            <h2>Instructor: Add New Assignment</h2>
+            <form onsubmit="addAssignment(event)">
+                <div>
+                    <label for="course">Course Name</label>
+                    <input id="course" required placeholder="e.g. Computer Networks">
+                </div>
+                <div>
+                    <label for="assignment">Assignment Title</label>
+                    <input id="assignment" required placeholder="e.g. Unit 1 Worksheet">
+                </div>
+                <div>
+                    <label for="deadline">Deadline</label>
+                    <input id="deadline" type="date" required>
+                </div>
+                <div>
+                    <label for="assignmentType">Assignment Type</label>
+                    <select id="assignmentType">
+                        <option>File Submission</option>
+                        <option>Link Submission</option>
+                        <option>Both File and Link</option>
+                    </select>
+                </div>
+                <div class="full"><button type="submit">Add Assignment</button></div>
+            </form>
+        </section>
+
+        <section id="submit">
+            <h2>Student Submission</h2>
+            <p id="selectedWork">Select “Submit” beside an assignment to upload your work.</p>
+            <div class="submit-area" id="submitArea">
+                <label for="fileUpload">Upload File</label>
+                <input id="fileUpload" type="file">
+                <br><br>
+                <label for="submissionLink">Or submit a drive / project link</label>
+                <input id="submissionLink" type="url" placeholder="https://...">
+                <br><br>
+                <button onclick="submitWork()">Submit Assignment</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>© 2026 Lovely Professional University | Assignment Submission Tracker</footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
